@@ -1,0 +1,14 @@
+# Ignore node_modules in any subfolder
+**/node_modules/
+
+# Ignore environment variables (IDs/Passwords)
+.env
+backend/.env
+
+# Angular build output
+/frontend/dist/
+/frontend/.angular/
+
+# OS specific files
+.DS_Store
+Thumbs.db
