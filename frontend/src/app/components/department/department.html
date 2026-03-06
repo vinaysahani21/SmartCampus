@@ -1,0 +1,76 @@
+<div class="app-container">
+  <aside class="side-nav">
+    <div class="brand">
+      <h2>Smart<span>Campus</span></h2>
+    </div>
+    <nav class="nav-menu">
+      <a routerLink="/dashboard" class="nav-item">
+        Overview
+      </a>
+      <a routerLink="/add-student" class="nav-item">
+       Registration
+      </a>
+      <a routerLink="/view-students" class="nav-item">
+       Directory
+      </a>
+      <a routerLink="/department" class="nav-item active">
+        Departments
+      </a>
+    </nav>
+    <button (click)="onLogout()" class="logout-link">Logout</button>
+  </aside>
+
+  <main class="content">
+    <header class="main-header">
+      <div>
+        <h1>Departments</h1>
+        <p>Define and manage institutional faculties and course categories.</p>
+      </div>
+    </header>
+
+    <div class="split-layout">
+      <div class="form-card">
+        <h3>Add New Department</h3>
+        <div class="input-field">
+          <label>Department Name</label>
+          <input [(ngModel)]="newDeptName" placeholder="e.g. Computer Science" (keyup.enter)="addDept()">
+        </div>
+        <button (click)="addDept()" class="btn-primary" [disabled]="!newDeptName.trim()" style="width: 100%; margin-top: 20px;">
+          Create Department
+        </button>
+      </div>
+
+      <div class="table-container">
+        <div class="table-card">
+          <h3>Active Faculties</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Faculty Name</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of departments">
+                <td>
+                  <div class="student-cell">
+                    <div class="avatar-initial">{{ d.name.charAt(0) }}</div>
+                    <span style="font-weight: 600;">{{ d.name }}</span>
+                  </div>
+                </td>
+                <td style="text-align: right;">
+                  <button (click)="deleteDept(d.id)" class="btn-icon" style="color: #ef4444;">Delete</button>
+                </td>
+              </tr>
+              <tr *ngIf="departments.length === 0">
+                <td colspan="2" style="text-align: center; color: #94a3b8; padding: 40px;">
+                  No departments found. Create your first faculty on the left.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

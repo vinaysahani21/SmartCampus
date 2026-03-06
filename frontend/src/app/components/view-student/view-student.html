@@ -1,0 +1,99 @@
+<div class="app-container">
+  <aside class="side-nav">
+    <div class="brand">
+      <h2>Smart<span>Campus</span></h2>
+    </div>
+    
+    <nav>
+      <a routerLink="/dashboard" class="nav-item">Overview</a>
+      <a routerLink="/add-student" class="nav-item">Registration</a>
+      <a routerLink="/view-students" class="nav-item active">Directory</a>
+            <a routerLink="/courses" routerLinkActive="active" class="nav-item"> Departments </a>
+
+    </nav>
+
+    <button (click)="onLogout()" class="logout-link">Logout</button>
+  </aside>
+
+  <main class="content">
+    <header class="main-header">
+  <div>
+    <h1>Students</h1>
+    <p>Manage the official student roster.</p>
+  </div>
+
+  <div class="header-actions">
+    <div class="filter-group">
+      <select [(ngModel)]="selectedDepartment" class="filter-select">
+  <option value="">All Departments</option>
+  <option *ngFor="let dept of departments" [value]="dept.name">
+    {{ dept.name }}
+  </option>
+</select>
+
+      <div class="search-wrapper">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search name or email...">
+      </div>
+    </div>
+    
+    <button routerLink="/add-student" class="btn-primary">+ Add Student</button>
+  </div>
+</header>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>Status</th>
+            <th style="text-align: right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of filteredStudents">
+            <td>
+              <div class="student-cell">
+<div class="avatar-initial">{{ s.name.charAt(0) }}</div>
+                <span style="font-weight: 600;">{{ s.name }}</span>
+              </div>
+            </td>
+            <td style="color: #64748b;">{{ s.email }}</td>
+            <td style="font-weight: 500;">{{ s.course }}</td>
+            <td><span class="status-badge">{{ s.status }}</span></td>
+            <td style="text-align: right;">
+              <button (click)="openEditModal(s)" class="btn-icon" style="margin-right: 8px;">Edit</button>
+              <button (click)="deleteStudent(s.id)" class="btn-icon" style="color: #ef4444;">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <div class="modal-overlay" *ngIf="isEditModalOpen">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Edit Student Details</h3>
+      <p>Update the information for {{ selectedStudent?.name }}</p>
+    </div>
+
+    <div class="modal-body" *ngIf="selectedStudent">
+      <div class="input-field">
+        <label>Full Name</label>
+        <input [(ngModel)]="selectedStudent.name" type="text" placeholder="Name">
+      </div>
+
+      <div class="input-field" style="margin-top: 15px;">
+        <label>Email Address</label>
+        <input [(ngModel)]="selectedStudent.email" type="email" placeholder="Email">
+      </div>
+
+      <div class="modal-actions">
+        <button (click)="closeModal()" class="btn-secondary">Cancel</button>
+        <button (click)="saveEdit()" class="btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

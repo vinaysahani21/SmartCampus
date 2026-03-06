@@ -1,0 +1,74 @@
+<div class="app-container">
+  <aside class="side-nav">
+    <div class="brand">
+      <h2>Smart<span>Campus</span></h2>
+    </div>
+    
+    <nav>
+      <a routerLink="/dashboard" class="nav-item active">Overview</a>
+      <a routerLink="/add-student" class="nav-item">Registration</a>
+      <a routerLink="/view-students" class="nav-item">Directory</a>
+      <a routerLink="/courses" routerLinkActive="active" class="nav-item"> Departments </a>
+    </nav>
+
+    <button (click)="onLogout()" class="logout-link">Logout</button>
+  </aside>
+
+  <main class="content" style="padding: 40px; flex: 1;">
+    <header style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h1 style="font-size: 2rem; color: #1e293b; font-weight: 800;">Analytics Dashboard</h1>
+        <p style="color: #64748b;">Here is what's happening on your campus today.</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; background: white; padding: 8px 15px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+        <div class="user-avatar">AD</div>
+        <span style="font-weight: 700; color: #1e293b;">Admin User</span>
+      </div>
+    </header>
+
+    <div class="stats-row">
+      <div class="card students">
+        <div class="card-icon">👥</div>
+        <span class="card-label">Total Students</span>
+        <span class="card-value">{{ stats.totalStudents }}</span>
+      </div>
+
+      <div class="card depts">
+        <div class="card-icon">🏢</div>
+        <span class="card-label">Active Departments
+        </span>
+        <span class="card-value">{{ stats.activeDepartments }}</span>
+      </div>
+
+      <!-- <div class="card staff">
+        <div class="card-icon">🛡️</div>
+        <span class="card-label">Faculty Members</span>
+        <span class="card-value">24</span>
+      </div> -->
+    </div>
+
+    <div class="table-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+        <h3 style="font-weight: 800; color: #1e293b;">Recent Enrollments</h3>
+        <button style="background: #f1f5f9; border: none; padding: 8px 16px; border-radius: 10px; color: #475569; font-weight: 600; cursor: pointer;">View All</button>
+      </div>
+
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="text-align: left; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
+            <th style="padding-bottom: 15px;">Student</th>
+            <th style="padding-bottom: 15px;">Department</th>
+            <th style="padding-bottom: 15px;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of stats.recentActivity" style="border-top: 1px solid #f1f5f9;">
+            <td style="padding: 15px 0; font-weight: 700; color: #334155;">{{ s.name }}</td>
+            <td style="padding: 15px 0; color: #64748b;">{{ s.course }}</td>
+            <td style="padding: 15px 0;"><span class="status-pill">{{ s.status }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>

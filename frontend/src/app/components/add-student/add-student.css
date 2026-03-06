@@ -1,0 +1,258 @@
+/* Import the sidebar styles from the previous step to keep it consistent */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6f9fc 0%, #eef2ff 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+/* SIDEBAR (No Underlines, Vibrant Active State) */
+.side-nav {
+  width: 260px;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.brand h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  padding-left: 12px;
+}
+.brand span { color: #3b82f6; }
+
+.nav-item {
+  color: #94a3b8;
+  text-decoration: none !important; /* No underlines */
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.nav-item.active {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+}
+
+/* CONTENT AREA */
+.content { flex: 1; padding: 40px 60px; }
+
+.main-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* FORM CARD */
+.form-card {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  border: none;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+  max-width: 800px; /* Wider for 2-column layout */
+  margin-top: 30px;
+}
+
+.form-header { margin-bottom: 35px; border-left: 4px solid #3b82f6; padding-left: 20px; }
+.form-header h2 { font-size: 1.5rem; font-weight: 800; color: #1e293b; }
+.form-header p { color: #64748b; margin-top: 5px; }
+
+/* Grid Layout for Form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.input-field { display: flex; flex-direction: column; }
+.full-width { grid-column: span 2; }
+
+label {
+  font-weight: 700;
+  color: #475569;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input, select {
+  padding: 14px 16px;
+  border: 2px solid #f1f5f9;
+  border-radius: 12px;
+  background: #f8fafc;
+  font-size: 1rem;
+  transition: all 0.2s;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #3b82f6;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.save-btn {
+  flex: 2;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+  transition: 0.3s;
+}
+
+.save-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.5); }
+.save-btn:disabled { opacity: 0.6; cursor: not-allowed; filter: grayscale(1); }
+
+.cancel-btn {
+  flex: 1;
+  background: #f1f5f9;
+  color: #64748b;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.cancel-btn:hover { background: #e2e8f0; color: #1e293b; }
+
+.error { color: #ef4444; font-size: 0.8rem; font-weight: 600; margin-top: 6px; }
+
+
+/* Sidebar Container */
+.side-nav {
+  width: 260px;
+  background: #0f172a; /* Deep Midnight Blue */
+  color: white;
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  box-sizing: border-box;
+}
+
+/* Brand Area */
+.brand {
+  padding: 0 16px;
+  margin-bottom: 50px;
+}
+
+.brand h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.brand span {
+  color: #3b82f6; /* Electric Blue accent */
+}
+
+/* Nav Link Styling */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between links */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  color: #94a3b8; /* Muted slate color */
+  text-decoration: none !important; /* CRITICAL: Kills the underlines */
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Hover State */
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  transform: translateX(4px); /* Subtle slide effect */
+}
+
+/* Active/Selected State */
+.nav-item.active {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+/* The "Selected Indicator" Bar */
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -16px; /* Sits at the edge of the sidebar */
+  top: 20%;
+  height: 60%;
+  width: 4px;
+  background: #3b82f6;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Icons within Nav */
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+/* Logout Button at bottom */
+.logout-link {
+  margin-top: auto;
+  padding: 14px;
+  background: rgba(239, 68, 68, 0.1); /* Subtle red tint */
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.logout-link:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+} 

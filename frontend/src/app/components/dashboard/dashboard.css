@@ -1,0 +1,241 @@
+:host {
+  --bg-gradient: linear-gradient(135deg, #f6f9fc 0%, #eef2ff 100%);
+  --sidebar-color: #1e1b4b; /* Deep Indigo */
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-pink: #ec4899;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  font-family: 'Plus Jakarta Sans', sans-serif; /* Modern, rounded font */
+}
+
+/* Sidebar with a touch of Gradient */
+.side-nav {
+  width: 260px;
+  background: var(--sidebar-color);
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand h2 {
+  font-size: 1.4rem;
+  background: linear-gradient(to right, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.nav-item {
+  color: #94a3b8;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.3s;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.nav-item.active {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  color: white;
+  box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.5);
+}
+
+/* Stats Cards: Color-Coded Accents */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 30px 0;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+/* Decorative background blobs for cards */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.card.students::before { background: var(--accent-blue); }
+.card.depts::before { background: var(--accent-purple); }
+.card.staff::before { background: var(--accent-pink); }
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.card.students .card-icon { background: #dbeafe; color: var(--accent-blue); }
+.card.depts .card-icon { background: #ede9fe; color: var(--accent-purple); }
+.card.staff .card-icon { background: #fce7f3; color: var(--accent-pink); }
+
+.card-label { color: #64748b; font-weight: 600; font-size: 0.9rem; }
+.card-value { font-size: 2rem; font-weight: 800; color: #1e293b; display: block; }
+
+/* Table Card */
+.table-card {
+  background: white;
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.status-pill {
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #dcfce7;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+/* Sidebar Container */
+.side-nav {
+  width: 260px;
+  background: #0f172a; /* Deep Midnight Blue */
+  color: white;
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  box-sizing: border-box;
+}
+
+/* Brand Area */
+.brand {
+  padding: 0 16px;
+  margin-bottom: 50px;
+}
+
+.brand h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.brand span {
+  color: #3b82f6; /* Electric Blue accent */
+}
+
+/* Nav Link Styling */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between links */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  color: #94a3b8; /* Muted slate color */
+  text-decoration: none !important; /* CRITICAL: Kills the underlines */
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Hover State */
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  transform: translateX(4px); /* Subtle slide effect */
+}
+
+/* Active/Selected State */
+.nav-item.active {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+/* The "Selected Indicator" Bar */
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -16px; /* Sits at the edge of the sidebar */
+  top: 20%;
+  height: 60%;
+  width: 4px;
+  background: #3b82f6;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Icons within Nav */
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+/* Logout Button at bottom */
+.logout-link {
+  margin-top: auto;
+  padding: 14px;
+  background: rgba(239, 68, 68, 0.1); /* Subtle red tint */
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.logout-link:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+} 

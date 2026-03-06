@@ -1,0 +1,69 @@
+<div class="app-container">
+  <aside class="side-nav">
+    <div class="brand">
+      <h2>Smart<span>Campus</span></h2>
+    </div>
+    <nav class="nav-menu">
+      <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">Overview</a>
+      <a routerLink="/add-student" routerLinkActive="active" class="nav-item">Registration</a>
+      <a routerLink="/view-students" routerLinkActive="active" class="nav-item">Directory</a>
+      <a routerLink="/department" routerLinkActive="active" class="nav-item">Departments</a>
+    </nav>
+    <button routerLink="/login" class="logout-link">Logout</button>
+  </aside>
+
+  <main class="content">
+    <header class="main-header">
+      <div>
+        <h1>Registration</h1>
+        <p style="color: #64748b; margin-top: 5px;">Onboard new students to the institutional portal.</p>
+      </div>
+      <div class="user-pill">Admin User</div>
+    </header>
+
+    <div class="form-card">
+      <div class="form-header">
+        <h2>Add New Student</h2>
+        <p>Ensure all information matches the student's legal documents.</p>
+      </div>
+
+      <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+        <div class="form-grid">
+          <div class="input-field full-width">
+            <label>Legal Full Name</label>
+            <input formControlName="name" type="text" placeholder="Johnathan Doe">
+            <small *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched" class="error">
+              Name is required for registration.
+            </small>
+          </div>
+
+          <div class="input-field">
+            <label>Institutional Email</label>
+            <input formControlName="email" type="email" placeholder="j.doe@campus.edu">
+            <small *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched" class="error">
+              Please enter a valid campus email.
+            </small>
+          </div>
+
+          <div class="input-field">
+            <label>Department / Course</label>
+            <select formControlName="course">
+              <option value="" disabled selected>Select a Department</option>
+              <option *ngFor="let d of departments" [value]="d.name">
+                {{ d.name }}
+              </option>
+            </select>
+            <small *ngIf="studentForm.get('course')?.invalid && studentForm.get('course')?.touched" class="error">
+              Please assign a department.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" routerLink="/dashboard" class="cancel-btn">Discard</button>
+          <button type="submit" [disabled]="!studentForm.valid" class="save-btn">Confirm & Register</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
