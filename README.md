@@ -19,21 +19,27 @@ State Mgmt     RxJS & Change Detection Optimization
 📥 Installation & Setup
 Follow these steps to get the project running locally on your machine.
 
-1. PrerequisitesNode.js (v18+)MongoDB (Local or Atlas Cloud)Angular CLI (npm install -g @angular/cli)
-2. Clone the RepositoryBashgit clone **https://github.com/vinaysahani21/SmartCampus.git**
+1. PrerequisitesNode.js (v18+)
+   MongoDB (Local or Atlas Cloud)Angular CLI (npm install -g @angular/cli)
+2. Clone the Repository:
    
-cd SmartCampus
+   git clone **https://github.com/vinaysahani21/SmartCampus.git**
+   cd SmartCampus
 
 3. Backend SetupBashcd backend
    
 **npm install**
 
-Create a .env file in the /backend folder.Add your MongoDB connection string: MONGO_URI=mongodb://localhost:27017/smartcampusStart the server:Bashnpm start
+Create a .env file in the /backend folder.
+Add your MongoDB connection string: MONGO_URI=mongodb://localhost:27017/smartcampus
+Start the server:
+   npm start
 
-4. Frontend SetupOpen a new terminal window:Bashcd frontend
-   
-npm install
-ng serve
+4. Frontend SetupOpen a new terminal window:
+
+   cd frontend
+   npm install
+   ng serve
 
 Navigate to http://localhost:4200/ to see the app in action
 
